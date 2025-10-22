@@ -1,19 +1,28 @@
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import fs from "fs-extra";
+import kleur from "kleur";
 
-
-// Works when bundled to CJS or run as ESM
-const dirname =
-  // @ts-ignore __dirname exists at runtime in CJS, not in ESM
-  typeof __dirname !== "undefined"
-    // @ts-ignore
-    ? __dirname
-    : path.dirname(fileURLToPath(import.meta.url));
+// In CJS builds, __dirname always exists. If something odd happens, fall back to cwd.
+const dirname = typeof __dirname !== "undefined" ? __dirname : process.cwd();
 
 const TEMPLATE_DIR = path.resolve(dirname, "../template");
 
+function printBanner() {
+  const banner = `
+██████╗ ████████╗███████╗████████╗██╗ ██████╗
+██╔══██╗╚══██╔══╝██╔════╝╚══██╔══╝██║██╔════╝
+██████╔╝   ██║   ███████╗   ██║   ██║██║     
+██╔══██╗   ██║   ╚════██║   ██║   ██║██║     
+██║  ██║   ██║   ███████║   ██║   ██║╚██████╗
+╚═╝  ╚═╝   ╚═╝   ╚══════╝   ╚═╝   ╚═╝ ╚═════╝`;
+  console.log(banner);
+  console.log(kleur.gray("────────────────────────────────"));
+  console.log(kleur.cyan("Happy coding <3"));
+  console.log(kleur.gray("HMU -> ") + kleur.blue("https://rtstic.dev/\n"));
+}
+
 async function main() {
+
   const arg = process.argv[2];
   const target = arg ? String(arg) : "my-cdn-app";
   const targetDir = path.resolve(process.cwd(), target);
@@ -46,11 +55,18 @@ async function main() {
     await fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
   }
 
-  console.log(`\nScaffold created at ./${path.relative(process.cwd(), targetDir)}`);
+  console.log(`\n${kleur.green("CDN Starter created successfully at ./")}${kleur.green(path.relative(process.cwd(), targetDir))}`);
+  console.log(kleur.gray("────────────────────────────────"));
   console.log("Next:");
   console.log(`  cd ${target}`);
   console.log("  pnpm install   # or npm/yarn");
-  console.log("  pnpm dev       # if your template has a dev script");
+  console.log("  pnpm dev       # to start the development server");
+  console.log("  pnpm build     # to build the project");
+  console.log(kleur.gray("Read more: ") + kleur.blue("https://github.com/rtstic/create-cdn-starter/readme.md"));
+  console.log(kleur.gray("────────────────────────────────"));
+  printBanner();
+  console.log(kleur.gray("────────────────────────────────"));
+
 }
 
 main().catch(err => {
