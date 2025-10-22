@@ -1,7 +1,15 @@
 {
   "name": "create-cdn-starter",
   "description": "Build a modern, production-ready starter template for no-code website builders, managing its code in a repository and distributing it through a CDN.",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtstic/create-cdn-starter.git"
+  },
+  "homepage": "https://github.com/rtstic/create-cdn-starter/blob/main/readme.md",
+  "bugs": {
+    "url": "https://github.com/rtstic/create-cdn-starter/issues"
+  },
   "type": "module",
   "bin": {
     "create-cdn-starter": "dist/cli.cjs"
@@ -11,7 +19,10 @@
     "template"
   ],
   "scripts": {
-    "build": "esbuild src/cli.ts --bundle --platform=node --format=cjs --outfile=dist/cli.cjs --banner:js='#!/usr/bin/env node'"
+    "build": "esbuild src/cli.ts --bundle --platform=node --format=cjs --outfile=dist/cli.cjs --banner:js='#!/usr/bin/env node'",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "release": "pnpm build && changeset publish"
   },
   "dependencies": {
     "figlet": "^1.9.3",
