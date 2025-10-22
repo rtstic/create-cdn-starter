@@ -1,0 +1,37 @@
+{
+  "name": "name-of-your-project",
+  "version": "0.0.0",
+  "description": "description-of-your-project",
+  "homepage": "homepage-of-your-project",
+  "license": "license-of-your-project",
+  "keywords": [],
+  "author": {
+    "name": "author-of-your-project",
+    "url": "url-of-your-project"
+  },
+  "type": "module",
+  "main": "dist/index.ts",
+  "module": "dist/index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node ./bin/build.js",
+    "build": "cross-env NODE_ENV=production node ./bin/build.js",
+    "cdn": "node ./bin/cdn.js",
+    "lint": "eslint ./src && prettier --check ./src",
+    "lint:fix": "eslint ./src --fix",
+    "check": "tsc --noEmit",
+    "format": "prettier --write ./src",
+    "release": "changeset publish",
+    "update": "pnpm update -i -L -r"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.4",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.25.5"
+  }
+}
