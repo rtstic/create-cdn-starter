@@ -1,6 +1,6 @@
 {
   "name": "create-cdn-starter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Build a modern, production-ready starter template for no-code website builders, managing its code in a repository and distributing it through a CDN.",
   "license": "MIT",
   "keywords": [
