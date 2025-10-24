@@ -1,6 +1,6 @@
 {
   "name": "create-cdn-starter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Build a modern, production-ready starter template for no-code website builders, managing its code in a repository and distributing it through a CDN.",
   "license": "MIT",
   "keywords": [
@@ -21,7 +21,6 @@
   "bugs": {
     "url": "https://github.com/rtstic/create-cdn-starter/issues"
   },
-
   "type": "module",
   "bin": {
     "create-cdn-starter": "dist/cli.cjs"
@@ -30,7 +29,6 @@
     "dist",
     "template"
   ],
-
   "engines": {
     "node": ">=18.0.0"
   },
@@ -44,7 +42,6 @@
     "url": "https://github.com/sponsors/rtstic"
   },
   "author": "Raimon T Simon",
-
   "scripts": {
     "build": "esbuild src/cli.ts --bundle --platform=node --format=cjs --outfile=dist/cli.cjs --banner:js='#!/usr/bin/env node'",
     "dev": "node dist/cli.cjs --help",
@@ -54,7 +51,6 @@
     "prepack": "pnpm build",
     "test": "node -e \"console.log('no tests yet')\""
   },
-
   "dependencies": {
     "figlet": "^1.9.3",
     "fs-extra": "^11.2.0",
