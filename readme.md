@@ -26,7 +26,7 @@ Make sure you have:
 Create a new CDN-Starter project using npm:
 
 ```bash
-npm create cdn-starter@latest
+npm create cdn-starter@latest my-project
 ```
 
 This will generate a new folder with all required configurations and project structure.
