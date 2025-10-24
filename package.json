@@ -1,12 +1,23 @@
 {
   "name": "create-cdn-starter",
+  "version": "1.0.2",
   "description": "Build a modern, production-ready starter template for no-code website builders, managing its code in a repository and distributing it through a CDN.",
-  "version": "1.0.1",
+  "license": "MIT",
+  "keywords": [
+    "cdn",
+    "starter",
+    "template",
+    "no-code",
+    "website",
+    "cli",
+    "scaffold",
+    "create"
+  ],
+  "homepage": "https://github.com/rtstic/create-cdn-starter#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rtstic/create-cdn-starter.git"
   },
-  "homepage": "https://github.com/rtstic/create-cdn-starter/blob/main/readme.md",
   "bugs": {
     "url": "https://github.com/rtstic/create-cdn-starter/issues"
   },
@@ -18,11 +29,27 @@
     "dist",
     "template"
   ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "preferGlobal": true,
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/rtstic"
+  },
+  "author": "Raimon T Simon",
   "scripts": {
     "build": "esbuild src/cli.ts --bundle --platform=node --format=cjs --outfile=dist/cli.cjs --banner:js='#!/usr/bin/env node'",
+    "dev": "node dist/cli.cjs --help",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "release": "pnpm build && changeset publish",
+    "prepack": "pnpm build",
+    "test": "node -e \"console.log('no tests yet')\""
   },
   "dependencies": {
     "figlet": "^1.9.3",
